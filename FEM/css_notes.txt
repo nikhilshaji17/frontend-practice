@@ -1,0 +1,113 @@
+Just like the basic building block of html is the tag, 
+the basic building block of CSS is the rule.
+
+CSS is not a programming language, rather, it is a set of rules you give the browser.
+CSS NEEDS HTML, but HTML can run independently.
+
+Example:
+	h1 {
+		color : red;
+	}
+
+h1 = selector. The browser looks for all tags of this 
+	type and applies its respective style.
+
+color = property.
+
+red = value.
+
+We need a semi-colon to denote the ending.
+
+Parents and Children:
+Example:	
+	<div>
+		<h1> Hello there </h1>
+	</div>
+
+div {
+	color : blue
+}
+
+In the example above, the h1 tag also becomes blue.
+	This is because the parent tag's color passes onto the 
+	children.
+
+NOTE: Not all styles get inherited. An example includes border-radius. 
+	You will need to refer the documentation.
+	Color and font permeate to the children.
+
+A single property could have multiple values:
+h1 {
+	border: solid 3px black;
+}
+
+The above example is a shortcut way of writing:
+h1 {
+	border-style: solid;
+	border-color: black;
+	border-width: 3px;
+}
+
+To refer to a classname, use the . operator:
+	.className {
+		color : red;
+		border : dashed;
+	}
+
+You can reuse styles across different tag types.
+
+- Suppose you create two styles for the same selector, the one that's lower
+	will take precedence, hence the "cascading" stylesheet:
+- Example:
+	.title {
+		color : red;
+	}
+
+	.title {
+		color : blue;
+	}
+
+- The title would be blue in color. 
+- NOTE: The same does not apply for tag title. Classes are more specific,
+	so even if you had a rule like the one below, the classes would take 
+	preference.
+	.title {
+		color : red;
+	}
+
+	h1 {
+		color : blue;
+	}
+
+In general, the more "specific" style takes precedence,
+	if two styles have the same "specificity", then 
+	the one lower takes precedence.
+
+Example:
+
+.brand .title {
+	color : red;
+}
+
+.title {
+	color : blue;
+}
+
+In the example above, although the .title below is blue,
+	the selectors above it are more specific and hence,
+	their styles take more precedence.
+
+Example 2:
+
+.brand .title {
+	color : red;
+}
+
+.title .title{
+	color : blue;
+}
+
+In the example above, although the same class name is provided 
+	twice, CSS does not care, it treats it as 2 classes. 
+	Since both have the same "specificity", the one below wins.
+

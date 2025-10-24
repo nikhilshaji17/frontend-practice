@@ -1,0 +1,77 @@
+<!-- Tells the browser that it will receive a HTML document -->
+<!DOCTYPE html>
+
+<!-- Tells the browser, particularly Chrome, to index this website if 
+ it needs the english version. For italian, we'd write "it" -->
+<html lang="en">
+
+<!-- The information in the head tag is not displayed to the end user.
+	It contains information like what is the character set,
+	how is it displayed on mobile, what is the document name? -->
+	<head>
+
+	<!-- A character set similar to ASCII. This essentially tells the browser, 
+	 "Handle these characters according to this encoding." If we changed it 
+	 to ASCII, then emojis cannot be displayed.-->
+		<meta charset="UTF-8" />
+	
+	<!-- Giving the browser instructions on how to handle different devices that 
+	 view our website. We do not want the browser to automatically adjust things. -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+	<!-- This is the title of your doc. This gets displayed as the title of the tab. -->
+		<title>My blog</title>
+
+	<!--This is how you link your css file to your HTML file-->
+		<link rel="stylesheet" href="index.css">
+	</head>
+
+	<!-- The actual web content goes here -->
+	<body>
+		<h1 class="page-title">This is my web page.</h1>
+		<a href="about.html">About</a>
+		
+		<div class="user-feed">
+			<div class="user-post">
+				<h2 class="post-title">Post Title</h2>
+				<h3 class="post-author">@test123</h3>
+				<h4 class="post-date">13:10:42</h4>
+				<img src="http://pets-images.dev-apis.com/pets/dog25.jpg" alt="a doggy" />
+				<p class="post-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, nihil?</p>
+			</div>
+
+			<div class="user-post">
+				<h2 class="post-title">Post Title</h2>
+				<h3 class="post-author">@test123</h3>
+				<h4 class="post-date">13:10:42</h4>
+				<img src="http://pets-images.dev-apis.com/pets/dog25.jpg" alt="a doggy" />
+				<p class="post-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, nihil?</p>
+			</div>
+
+			<div class="user-post">
+				<h2 class="post-title">Post Title</h2>
+				<h3 class="post-author">@test123</h3>
+				<h4 class="post-date">13:10:42</h4>
+				<img src="http://pets-images.dev-apis.com/pets/dog25.jpg" alt="a doggy" />
+				<p class="post-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, nihil?</p>
+			</div>
+
+			<div class="user-post">
+				<h2 class="post-title">Post Title</h2>
+				<h3 class="post-author">@test123</h3>
+				<h4 class="post-date">13:10:42</h4>
+				<img src="http://pets-images.dev-apis.com/pets/dog25.jpg" alt="a doggy" />
+				<p class="post-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, nihil?</p>
+			</div>
+
+			<div class="user-post">
+				<h2 class="post-title">Post Title</h2>
+				<h3 class="post-author">@test123</h3>
+				<h4 class="post-date">13:10:42</h4>
+				<img src="http://pets-images.dev-apis.com/pets/dog25.jpg" alt="a doggy" />
+				<p class="post-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, nihil?</p>
+			</div>
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,164 @@
+HTML = content of your website
+CSS = style of your website
+JS = The engine that runs all the interactivity in the website
+
+<h1></h1> = Tags 
+
+Anchor tags = <a> </a> 
+- Used to insert links
+- We also use these to link to different parts of our page, by using the respective ID's.
+- Eg: <a href="https://www.wikipedia.com"> Front end Masters </a>
+
+Division = <div> </div>
+- Used as a "cardboard box"
+- Use these as separators
+- A generic divider
+- You can put styles within the divs as well:
+	- <div style="width: 100px; height: 100px; background-color: red;"></div>
+	
+Span = <span> </span>
+- Used for smaller sections of text
+- Pretty much the same as a div
+- <p>This is <span style="text-decoration: underline">important</span> text</p>
+
+Lists:
+	<ol>
+		<li> Item 1 </li>
+		<li> Item 2 </li>
+		<li> Item 3 </li>
+	</ol>
+	Numbering appears automatically
+
+	<ul>
+		<li> Item 1 </li>
+		<li> Item 2 </li>
+		<li> Item 3 </li>
+	</ul>
+	Bullet points appear automatically
+
+Button = <button> Hello </button>
+
+Image tags = <img> (self-closing tags)
+- Image tags need an src to know where the image is coming from, and they also need an alt tag for screen readers
+	- <img src="https://www.xyz.com/image" alt="An Example" />
+
+Input tags = <input />
+- Used to accept user input. 
+- You can specify the type of input field you have
+	- <input type="text" />
+	- <input type="radio" />
+	- <input type="file" />
+	- <input type="color" />
+- Radio buttons for a single choice
+- Checkboxes if you want the user to select multiple things
+
+Text areas = <textarea> </textarea>
+- Used for long form input
+- Use this to get like large notes from users.
+
+Selects = <select> </select>
+- This is a dropdown, that offers choices. 
+- Can be used as an alternative between radio buttons and checkboxes.
+- Example: 
+	<select>
+		<option value="seattle">Seattle</option>
+		<option value="portland">Portland</option>
+		<option value="california">California</option>
+	</select>
+
+Form = <form> </form>
+- Used to keep a collection of inputs, selects, radio buttons and so on.
+- Example:
+	<form>
+		<input placeholder="First Name">
+		<input placeholder="Last Name">
+		<select>
+			<option value="seattle">Seattle</option>
+			<option value="portland">Portland</option>
+			<option value="california">California</option>
+		</select>
+	</form>
+
+The form itself does not do anything, it's the javascript we attach to it that makes the required changes.
+
+Tables:
+<table>
+	<thead>
+		<tr>
+			<td> Some Heading 1</td>
+			<td> Some Heading 2</td>
+		</tr>
+	</thead>
+	<body>
+		<tr>
+			<td> (0,0) </td>
+			<td> (0,1) </td>
+		</tr>
+		<tr>
+			<td> (1,0) </td>
+			<td> (1,1) </td>
+		</tr>
+	</body>
+</table>
+
+Use the relevant tags for the relevant component. This way screen readers
+and other assistive technologies will be able to parse your site appropriately.
+
+Comments:
+<!------This is the syntax----->
+
+Attributes:
+- These are the parameters that you pass to your tags.
+- Example: <input type="checkbox">
+			<input type="radio">
+- The type keyword is the attribute.
+
+Classes:
+- These are attributes that we attach ourselves to 
+	our tags
+- They allow us to style our tags, by applying CSS 
+	to our tags, using those class names. We also identify things using classes.
+- We can use divs, give them a class name, and then
+	modify said div according to our requirement.
+- You can have multiple classes, by providing spaces
+- Example: <div class="title text-input">
+				<h1>
+					This is the title
+				</h1>
+			</div>
+
+ID's:
+- Similar to classes, except they are not reusable
+- Every ID is meant to be unique.
+- If you provide multiple elements with the same ID, then CSS may
+	apply the same style to all of them, but the functionality may break
+	when we use JS.
+- Example: document.getElementById('box') // Picks only first matching element
+
+Difference between <article> and <div>:
+	- Nothing functionally, the browser treats them the same.
+	- Devs use them to group things according to their respective logic
+	- There is also the <section> tag, which functionally again changes nothing,
+		but can be used as a larger "container" than an <article>
+
+Navigation:
+- We use the <nav></nav> tags
+- Example: 
+	<nav>
+		<ul>
+			<li>
+				<a href="/">Home</a>
+			</li>
+
+			<li>
+				<a href="/about">About</a>
+			</li>
+		</ul>
+	</nav>
+- Relative links: When there's no '/' preceding your path in the href
+- Example: <a href="home">Home</a>
+
+Meta Tags:
+- These are tags that describe the document without getting displayed.
+
+The root of your project = index.html
