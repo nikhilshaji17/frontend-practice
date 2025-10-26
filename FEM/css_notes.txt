@@ -4,6 +4,9 @@ the basic building block of CSS is the rule.
 CSS is not a programming language, rather, it is a set of rules you give the browser.
 CSS NEEDS HTML, but HTML can run independently.
 
+We can write CSS inline (within the tag itself), we can write CSS in the <head></head> of our document, and we can write CSS
+in a stylesheet and then import it to our project.
+
 Example:
 	h1 {
 		color : red;
