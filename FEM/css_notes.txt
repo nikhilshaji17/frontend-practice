@@ -231,4 +231,110 @@ Example:
 </style>
 
 Layout:
+Everything in CSS has a display property, whether explicit or not.
+By default, <divs></divs> have display: block (they take an entire row). Every span has display : inline, and text is usually black
+inherently.
+
+block : takes the whole line to itself, thus allowing you to control borders, width, height etc.
+inline : flows into the text, so it is controlled by the browser. We cannot adjust height, width etc.
+inline-block : flows into the text, but we can control the width and height.
+
+margin : pushes things away from it.
+padding : pushes the things within it.
+
+Note: height cannot be done in percentages, width can. Height can be modified in pixels however.
+
+* {
+	box-sizing : border-box;
+}
+
+Use above as the first line in all your code.
+margin -> border -> padding -> content
+
+float : The idea behind float is you'll tell an element to push itself as far left or right as possible, 
+	and once it's out of space, go to the next line.
+
+Certain properties are inherited from the parent by the children, these are usually font and text related properties. 
+Many properties however, are not inherited by the children.
+
+Flex:
+
+flex : use this on the parent container, and the children will inherit it.
+
+float = wraps
+flex = squishes
+
+Flex-container = set this on the parent
+flex-items = set this on the children
+
+justify-content worries about horizontal justification and align-items worries about vertical alignment.
+
+Grid:
+row-gap and column-gap are how you do gutters in grid i.e. the space between items in the grid
+
+grid-template-column allows you to set up how the grid is constructed. You can do it in percentages, pixels, or fr which stands for fractions.
+
+You can describe your grid as follows:
+
+<style>
+  .my-page-header {
+    grid-area: nav-header;
+    background-color: red;
+    padding: 10px;
+  }
+  .my-page-body {
+    grid-area: main-body;
+    background-color: blue;
+    padding: 10px;
+  }
+
+  .my-page-sidebar {
+    grid-area: nav-side;
+    background-color: green;
+    padding: 10px;
+  }
+
+  .my-page-footer {
+    grid-area: footer;
+    background-color: yellow;
+    padding: 10px;
+  }
+
+  .my-page {
+    display: grid;
+    grid-template-areas:
+      "nav-header  nav-header  nav-header  nav-side"
+      "main-body   main-body   .   		   nav-side"
+      "footer      footer      footer      footer";
+  }
+</style>
+<div class="my-page">
+  <header class="my-page-header">the header</header>
+  <div class="my-page-body">the body</div>
+  <div class="my-page-sidebar">the sidebar</div>
+  <footer class="my-page-footer">the footer</footer>
+</div>
+
+If you notice grid-template-areas, you see that you can describe your page layout in simple English terms.
+
+Grid = For simple page layouts.
+Flex = For unique, in depth layouts.
+
+Animations:
+We use the @keyframes keyword to define a set of instructions like rotate.
+
+Example: 
+<style>
+  @keyframes spin {
+    to { // This means transform to.
+      transform: rotate(360deg);
+    }
+  }
+  .spinny-boi {
+    animation: spin 5s infinite linear; // This property allows you to use the previously defined animation.
+    display: inline-block;
+    font-size: 50px;
+  }
+</style>
+<div class="spinny-boi">🤢</div>
 
