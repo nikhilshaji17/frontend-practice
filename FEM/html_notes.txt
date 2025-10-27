@@ -54,7 +54,7 @@ Input tags = <input />
 
 Text areas = <textarea> </textarea>
 - Used for long form input
-- Use this to get like large notes from users.
+- Use this to get large notes from users.
 
 Selects = <select> </select>
 - This is a dropdown, that offers choices. 

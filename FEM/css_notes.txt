@@ -114,3 +114,121 @@ In the example above, although the same class name is provided
 	twice, CSS does not care, it treats it as 2 classes. 
 	Since both have the same "specificity", the one below wins.
 
+  .main-brand-2 {
+    border: 1px solid black;
+    color: red;
+  }
+
+  .title-2 {
+    color: green;
+  }
+
+<h1 class="title-2 main-brand-2">Branding here</h1>
+
+The text "Branding here" will be green in color, but it will have a border as well, since the border 
+does not conflict with the .title-2 selector.
+Keep in mind that each of these "conflicts" is resolved on a property-by-property basis.
+
+NOTE: The space between the class names also matters:
+Example: .title .main-brand {
+	color : red;
+}
+
+.title.main-brand {
+	color : blue;
+}
+
+The example without the space will look for a class with BOTH THE CLASS NAMES TOGETHER, IN ANY ORDER.
+The example with the space will look for a class NAMED main-brand, which is nested within another class NAMED title.
+
+ID's have the highest specificity.
+Suppose you have:
+	<h1 id="title" class="nav-head post-title">Hello there</h1>
+
+#title {
+	color : red;
+}
+
+.nav-head.post-title {
+	color : blue;
+}
+
+The id at the top would have the highest priority. however, if you added something like:
+
+#title.nav-head {
+	color : pink;
+}
+
+This new style is more specific, hence our text would be pink.
+
+The most priority is given to !important
+
+So the order of priority would be:
+!important -> inline styles -> #ids -> class_names -> tag names
+
+Also, the order in which you import your stylesheets into the <head></head> tag also matters, this decides the order
+of the cascade.
+
+Pseudoclasses:
+These allow you to add certain functionality, on if a situation is true.
+
+Example:
+
+.special-box {
+	width: 200px;
+	height: 200px;
+	background-color: red;
+}
+
+.special-box:hover {
+	width: 100px;
+	height: 100px;
+	background-color: green;
+}
+
+By default, the box would be 200px x 200px and red in color.
+However, if you hover over it, then it would take on the properties below.
+
+Another important pseudoclass would be :required and :optional (while filling up forms)
+.list-items:nth-child(3) {
+	color : red;
+	font-style : bold;
+}
+
+.list-items:nth-child(2n) {
+	...
+}
+
+This would apply a formula, where the 2nd, 4th and so on  elements would end up being modified.
+
+NOTE: Certain pseudoclasses wouldn't work on mobile, like hover. Keep in mind.
+
+Pseudoelement:
+While pseudoclasses are represented by :, pseudoelements are represented by ::
+These allow us to create text, image, symbols or other elements, without having to create new HTML elements.
+
+Example:
+<div class="chapter">This is a chapter of my book.</div>
+<div class="chapter">This is a second chapter of my book.</div>
+
+<style>
+  .chapter {
+    margin: 0;
+  }
+  .chapter::before {
+    content: "❦";
+    font-size: 50px;
+    text-align: center;
+    display: block;
+  }
+  
+   .chapter::after {
+    content: "❦";
+    font-size: 50px;
+    text-align: center;
+    display: block;
+  }
+</style>
+
+Layout:
+
