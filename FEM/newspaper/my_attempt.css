@@ -1,0 +1,81 @@
+* {
+	box-sizing: border-box;
+}
+
+.page {
+	display: grid;
+}
+
+.page-title {
+	font-family: "Snell Roundhand";
+    font-weight: normal;
+    font-size: 60px;
+    text-align: center;
+	display: block;
+}
+
+.nav-list {
+	list-style: none;
+	display: flex;
+	justify-content: space-around;
+	padding: 15px;
+}
+
+.nav-link {
+	font-size: 30px;
+    font-weight: bold;
+    color: #555;
+    font-family: "Futura";
+	grid-area: "nav";
+	text-decoration: none;
+}
+
+.nav-link:hover {
+	text-decoration: underline;
+}
+
+.news-article-1 {
+    padding: 10px;
+	border: 2px solid;
+	grid-area: "news-article-1";
+}
+
+.news-article-2 {
+    padding: 10px;
+	border: 2px solid;
+	grid-area: "news-article-2";
+}
+
+.news-article-3 {
+    padding: 10px;
+	border: 2px solid;
+	grid-area: "news-article-3";
+}
+
+.news-article-4 {
+    padding: 10px;
+	border: 2px solid;
+	grid-area: "news-article-4";
+}
+
+.news-article-5 {
+    padding: 10px;
+	border: 2px solid;
+	grid-area: "news-article-5";
+}
+
+.news-article-title {
+	font-size: 30px;
+    text-align: center;
+    font-weight: normal;
+    font-style: italic;
+}
+
+.news-articles {
+	display: grid;
+	border: 2px solid;
+	grid-template-areas:
+		"nav            nav            nav"
+		"news-article-1 news-article-2 news-article-3"
+		"news-article-4 news-article-5 news-article-5"; 
+  }
