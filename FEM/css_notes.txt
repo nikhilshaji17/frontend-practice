@@ -338,3 +338,5 @@ Example:
 </style>
 <div class="spinny-boi">🤢</div>
 
+position: relative make all the elements in a particular container move around relative to that container, not relative to 
+  the entire page.
