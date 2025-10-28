@@ -1,0 +1,84 @@
+- Write code that:
+	1. Can be read and maintained easily by anyone
+	2. Performs the actual task it was designed for
+
+JS is single-threaded
+
+To declare a variable:
+
+const varName = 100; // This value cannot be changed
+
+let varName = 50; // This value can change
+
+var varName = 25; // This value can change too.
+
+var is function scoped.
+let is block scoped (only usuable between its respective {})
+
+Use "let" and "const", "var" has a lot of quirks (google var hoisting and initialization)
+
+Use camelCasing for variable declaration.
+
+REPL = read evaluate print loop
+
+Load CSS in the <head></head>, so that the user only sees styled content (We avoid FOUC)
+Load HTML next, so that the user sees content.
+Load JS at the end of the <body></body>, so that the user can interact with the page, while our functionality loads up.
+
+This order matters because the browser executes line-by-line, and this optimizes time spent by the user.
+
+Data Types in Javascript:
+JS realizes the variable it is dealing with is a string by seeing the double quotes it is wrapped in (or single quotes).
+	- You can also use back ticks (`Hello`)
+	- Use back ticks if your strings span multiple lines
+
+const sentenceTemplate = `Hello ${firstName} ${lastName}! Hope you're well`
+
+let isBrianCool = true;
+let isBrianCool = false;
+
+The above is how you declare booleans
+
+Use triple equals to check whether two values are equal.
+	if (2 === 2) 
+	{
+		console.log("Equals");
+	}
+
+Double equals sign performs type-coercion:
+	2 == "2" // evaluates to true
+	2 === "2" // evaluates to false
+
+In other words, double equals ignores types, triple equals keeps types in mind.
+
+Loops:
+- while loop syntax:
+
+	let friends = 0;
+	while (friends < 10) {
+		friends += 1;
+	}
+	console.log(friends);
+
+- Even function declarations and var declarations are hoisted to the top of their scope.
+- However, arrow functions, and function variables are not hoisted to the top.
+
+There are different ways to declare a function:
+1. 	
+	Function Declaration:
+	function functionName() {
+		console.log("Hello")
+	}
+
+2. 
+	Function Expression:
+	const varName = function () {
+		console.log("Hello")
+	}
+
+3. 
+	Arrow Functions:
+	const varName = () => {
+		console.log("Hello");
+	}
+
