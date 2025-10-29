@@ -284,3 +284,54 @@ This is why the keyword "this" comes under context, because the context matters 
 
 NOTE: You can manipulate context, i.e, you can change what the "this" keyword points to, by using the .bind() function.
 
+NOTE: If something does not have a context, its context is window.
+	i.e, in reality, everything's default context is window.
+	therefore, console.log() in reality is window.console.log()
+
+However, if you are developing in node.js, there is no window object.
+
+Arrays:
+
+	Syntax:
+	- const arrayExample = ["element1", "element2", "element3"];
+	OR
+	- const arrayExample2 = ["stringElement", 12, true, "finalString"];
+
+You can also have arrays that contain objects or even other arrays.
+
+You can push elements onto your array using .push()
+
+array.length has no () at the end, because length is actually a property in every array. So there is nothing to calculate.
+array.pop() has a parenthesis, because a function is being called. 
+
+shift() => removes an element from the start
+unshift(element) => adds elements to the start
+
+const cities = ["Abu Dhabi", "Dubai", "Hong Kong"]
+
+To iterate through the array:
+for (let i = 0; i < cities.length; i++) {
+	console.log(cities[i]);
+}
+
+OR
+
+cities.forEach(function (city) {
+	console.log(city);
+});
+
+OR
+
+function logCity(city) {
+	console.log(city);
+}
+
+cities.forEach(logCity);
+
+OR
+
+cities.forEach((city) => {
+	console.log(city);
+})
+
+i.e, the forEach() takes a function as argument. You can define the function before passing it, or while passing it. Its return value is discarded. 
