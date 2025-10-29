@@ -82,3 +82,205 @@ There are different ways to declare a function:
 		console.log("Hello");
 	}
 
+// Works, because regular function declarations and initialization are hoisted to the top
+// testFunction()
+
+// function testFunction(){
+// 	console.log("From inside the function")
+// }
+
+// --------------------------------------------------------------------------
+
+// Does not work, because function expression declarations are hoisted, but not their initializations
+
+// console.log(typeof(testing))
+// testing()
+
+// const testing = function testFunction(){
+// 	console.log("From inside the function") 
+// }
+
+// --------------------------------------------------------------------------
+
+// Does not work, because arrows function declarations are hoisted, but not their initializations
+
+// console.log(typeof(testing))
+// testing()
+
+// const testing = () => {
+// 	console.log("From inside the function") 
+// }
+
+Scope:
+var is function-scoped, while let and const is block-scoped.
+
+Example 1:
+	console.log(oneMoreTest);
+	var oneMoreTest;
+	oneMoreTest = "HELLLLLOOOOOO";
+	console.log(oneMoreTest);
+
+The first console.log() gives undefined, the second gives "HELLLLLOOOOOO". Program does not break
+
+Example 2:
+	console.log(oneMoreTest);
+	let oneMoreTest; (or const oneMoreTest)
+	oneMoreTest = "HELLLLLOOOOOO";
+	console.log(oneMoreTest);
+
+The first console.log() will break the program.
+
+Example 3:
+	let oneMoreTest; (or const oneMoreTest)
+	console.log(oneMoreTest);
+	oneMoreTest = "HELLLLLOOOOOO";
+	console.log(oneMoreTest);
+
+The first console.log() gives undefined, the second gives "HELLLLLOOOOOO". Program does not break
+
+Built-ins:
+In built function within Javascript.
+- Examples:
+	1. toLowerCase()
+	2. toUpperCase()
+
+Note: There exists "NULL" type and undefined type in "Javascript"
+
+Conceptually, undefined indicates the absence of a value, while null indicates the absence of an object.
+
+Objects:
+
+An object is defined as follows:
+	const person = {
+		name: "Nik", // The key "name" is called an object property. "name" is a property of the "person" object
+		age: 24,
+		height: 179,
+	};
+
+We can access the property by doing the following:
+console.log(person.name)
+OR
+console.log(person["name"])
+
+A good use of the square bracket notation would be:
+const userAge = "age";
+const ageValue = person[userAge];
+
+ageValue will store 24 (refer object above)
+
+Even console.log can be written in the square notation:
+console["log"]("Hello there")
+
+Objects can also have functions stored in them:
+const dog = {
+	name: "Luna";
+	speak: function () {
+		console.log("Woof");
+	}
+};
+
+dog.speak();
+
+OR
+
+const dog = {
+	name: "Bella";
+	speak() {
+		console.log("Woof woof");
+	}
+};
+
+dog.speak();
+
+Both the syntaxes above are correct
+
+// const dog = {
+// 	name: "Luna",
+// 	speak() {
+// 		console.log("Woof woof");
+// 	}
+// };
+
+// const dog = {
+// 	name: "Luna",
+// 	speak: function() {
+// 		console.log("Woof Woof");
+// 	}
+// }
+
+// dog.speak();
+// dog["speak"]();
+
+These are various combinations of creating an object with a function, and calling that function property as well.
+
+Objects can also nest other objects:
+
+const person = {
+	name: {
+		first: "Brian",
+		last: "Holt"
+	},
+	location: {
+		country: "USA",
+		state: "Seattle"
+	},
+};
+
+console.log(person.name.first)
+OR
+console.log(person["name"]["first"])
+
+NOTE: You can create classes in Javascript, in case you want multiple objects of the same blueprint.
+Example:
+
+	class Car {
+		...
+		...
+		...
+	}
+	const civic = new Car();
+
+Context:
+
+const me = {
+  name: {
+    first: "Brian",
+    last: "Holt",
+  },
+  location: {
+    streetNumber: 500,
+    street: "Fakestreet",
+    city: "Seattle",
+    state: "WA",
+    zipCode: 55555,
+    country: "USA",
+  },
+  getAddress() {
+    return `${this.name.first} ${this.name.last}
+				${this.location.streetNumber} ${this.location.street}
+				${this.location.city}, ${this.location.state} ${this.location.zipCode}
+				${this.location.country}
+			`;
+  },
+};
+
+const pulledOutAddress = me.getAddress();
+const pulledOutAddressNoBrackets = me.getAddress;
+
+console.log(pulledOutAddress); 
+// This will give you a string containing actual firstName, streetNumber and so on. This is because "pulledOutAddress's" context
+	refers to the object "me".
+
+
+console.log(pulledOutAddressNoBrackets());
+// This will give you a string containing undefined. This is because pulledOutAddressNoBrackets refers to just the function,
+	and the context will be the global window context. So fun :| 
+
+The this keyword allows you to access the properties of the object that called it. This
+	allows different objects to use the same function property, while referring to their own
+	property variables.
+
+This is why the keyword "this" comes under context, because the context matters as to when you called it.
+
+NOTE: You can manipulate context, i.e, you can change what the "this" keyword points to, by using the .bind() function.
+
