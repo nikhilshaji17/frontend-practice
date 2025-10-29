@@ -1,0 +1,40 @@
+The process of retrieving a page goes something like:
+1. Code is written in an Editor
+2. Code is pushed to a server
+3. User requests your URL from the server
+4. Our index.html is delivered to them
+5. The index.html is read line-by-line, and the corresponding CSS and JS files
+	are loaded.
+
+NOTE: The CSS is executed line by line fairly quickly. The JS script is loaded, each line in it is executed line-by-line, and 
+		once it is over, the remaining HTML lines are executed.
+
+DOM (Document Object Model):
+- Things you have in the DOM are not accessible in node.js or deno or other runtimes
+
+Assume your HTML is as follows:
+	<div class="red-square"></div>
+
+Assume CSS is as follows:
+	.red-square {
+		color: red;
+		width: 100px;
+		height: 100px;
+	}
+
+Our output would be a red square, we can overwrite this using Javascript.
+
+const redSquare = document.querySelector(".red-square");
+redSquare.style.backgroundColor = "limegreen";
+redSquare.style.width = "300px";
+
+The variable redSquare would be referring to the square created in HTML, and we can modify its appearance using JS.
+
+The "document" keyword allows you to reach into your HTML and modify values.
+When we manipulate styles, we're actually just adding inline styles.
+
+The old way of modifying values was document.getElementsByClassName('classNameWithout.')
+
+Note: querySelector finds the first instance of some class
+	  querySelectorAll finds all the instances of some class
+
