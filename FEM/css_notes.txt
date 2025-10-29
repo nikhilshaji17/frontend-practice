@@ -28,7 +28,7 @@ Example:
 	</div>
 
 div {
-	color : blue
+	color : blue;
 }
 
 In the example above, the h1 tag also becomes blue.
