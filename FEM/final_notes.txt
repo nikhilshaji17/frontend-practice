@@ -33,8 +33,50 @@ The variable redSquare would be referring to the square created in HTML, and we 
 The "document" keyword allows you to reach into your HTML and modify values.
 When we manipulate styles, we're actually just adding inline styles.
 
+document.querySelector(".className") = directly gives you an object of the first instance of the class name.
+document.getElementsByClassName("className") = gives you a Node List (use it like an array), which contains all elements of that class name.
+A node list is similar to an array, but it does not have certain functions like .map(), .filter() and so on.
+
 The old way of modifying values was document.getElementsByClassName('classNameWithout.')
 
 Note: querySelector finds the first instance of some class
-	  querySelectorAll finds all the instances of some class
+	  querySelectorAll finds all the instances of some class, and returns a Node list.
 
+const elementsToChange = document.querySelectorAll(".js-target");
+elementsToChange.forEach((element) => {
+  element.innerText = "Changed";
+  element.style.color = "blue";
+})
+
+Note: When using .querySelectorAll(), we have to be precise with our className. Simply passing a tag like <li></li> will select everything 
+on your page. 
+
+let counter = 0;
+
+const buttonHandler = document.querySelector(".myButton");
+buttonHandler.addEventListener("click", () => {
+	counter += 1;
+	console.log("Hello from console", counter);
+});
+
+The addEventListener function takes the action you want it to listen to, and the function to execute when the event happens.
+The action we pass is the event, the function we pass as a parameter is called a callback function.
+
+Event Bubbling/ Event Delegation:
+- Events can bubble up from children to their parents.
+
+Example:
+	<div class="button-container">
+		<button>1</button>
+		<button>2</button>
+		<button>3</button>
+		<button>4</button>
+		<button>5</button>
+	</div>
+
+Instead of having to write event listeners for every button, we can just do:
+- document.querySelector(".button-container").addEventListener("click", (event) => {
+	console.log(`You clicked button number ${event.target.innerText}`);
+})
+
+event.target = lets you know what was clicked.
