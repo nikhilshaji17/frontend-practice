@@ -1,0 +1,86 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	padding: 0;
+	margin: 0;
+}
+
+.calc-screen {
+	display: block;
+	width: 400px;
+	padding: 2px;
+	background-color: black;
+}
+
+.calc-output {
+	font-family: "Courier New", Courier, monospace;
+	font-size: 40px;
+	font-weight: normal;
+	padding-right: 2px;
+	color: white;
+	text-align: right;
+}
+
+.calc-buttons {
+	width: 400px;
+	height: 500px;
+}
+
+.button-row {
+	display: flex;
+	justify-content: space-between;
+}
+
+.button-row .regular-button{
+	flex-grow: 1;
+	font-size: 40px;
+	cursor: pointer;
+	width: 24.5%;
+	background-color: #d8d9db;
+	height: 100px;
+}
+
+.button-row .regular-button:hover{
+	background-color: #ebebeb;
+}
+
+.button-row .regular-button:active{
+	background-color: #bbbcbe;
+}
+
+.button-row button:last-child {
+	background-color: #df974c;
+	color: white;
+}
+
+.clear-button.double {
+	width: 50%;
+	font-size: 40px;
+	cursor: pointer;
+	background-color: #d8d9db;
+}
+
+.clear-button.double:hover {
+	background-color: #ebebeb;;
+}
+
+.clear-button.double:active {
+	background-color: #bbbcbe;
+} 
+
+.zero-button.triple {
+	width: 74.8%;
+	font-size: 40px;
+	cursor: pointer;
+	background-color: #d8d9db;
+}
+
+.zero-button.triple:hover {
+	background-color: #ebebeb;
+}
+
+.zero-button.triple:active {
+	background-color: #bbbcbe;
+} 

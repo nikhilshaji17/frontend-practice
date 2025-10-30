@@ -1,0 +1,18 @@
+Plan:
+1. Lay out the HTML of the page first.
+2. Style the HTML
+3. Apply JS functionality
+
+HTML:
+1. Focus on just placing the black display screen first. You can display block here.
+2. Now, focus on creating the layout for the buttons that follow. Flex should be the way to go.
+	Put all the buttons as a block.
+
+Javascript:
+1. Add an event listener to every button, that listens for clicks
+2. Take the inner text of the button that was clicked
+	a. If the button was any digit, display it on the screen, and store it in result.
+	b. If the button was the Clear option, set displayText to 0, and set result to 0.
+	c. If the button was any of the operators, set diplayText to 0, but keep result as is.
+	d. If the button was the equal to sign,
+	e. If the button was the backspace option,
