@@ -1,6 +1,6 @@
 let displayText = document.querySelector(".calc-output");
 let buttonHandler = document.querySelector(".calc-buttons");
-let tempResult = "0";
+let runningTotal = 0;
 let result = "0";
 let operator = "";
 
@@ -11,40 +11,41 @@ function checkIfNumber (number) {
 	return false;
 }
 
-function handleClear (displayText, tempResult, result) {
+function handleClear (displayText, runningTotal, result) {
 	displayText.innerText = "0";
-	tempResult = displayText.innerText;
+	runningTotal = 0;
 	result = displayText.innerText;
 	operator = "";
 }
 
-function handleSymbols (displayText, tempResult, result, clickResult) {
-	result = tempResult;
-	operator = clickResult;
-	displayText.innerText = "0";
-	tempResult = displayText.innerText;
-}
-
-function calculateResult(valueOne, valueTwo, operator) {
+function calculateResult(runningTotal, intBuffer, operator) {
 	if (operator == "+") {
-		return (valueOne + valueTwo);
+		runningTotal += intBuffer;
 	} else if (operator == "-") {
-		return (valueOne - valueTwo);
+		runningTotal -= intBuffer;
 	} else if (operator == "x") {
-		return (valueOne * valueTwo);
-	} else if (operator = "÷")
-		return (valueOne / valueTwo);
+		runningTotal *= intBuffer;
+	} else if (operator = "÷") {
+		runningTotal /= intBuffer;
+	}
+	console.log(runningTotal);
 }
 
-function displayResult(displayText, tempResult, result, operator) {
-	let valueOne = Number(result);
-	console.log(valueOne);
-	let valueTwo = Number(tempResult);
-	console.log(valueTwo);
-	let finalValue = calculateResult(valueOne, valueTwo, operator)
-	tempResult = String(finalValue);
-	displayText.innerText = tempResult;
-	result = "0";
+function handleSymbols (displayText, runningTotal, result, operator) {
+	if (result == "0") {
+		return ;
+	}
+	const intBuffer = parseInt(result);
+	if (runningTotal === 0) {
+		runningTotal = intBuffer;
+	} else {
+		runningTotal = calculateResult(runningTotal, intBuffer, operator);
+	}
+	displayText.innerText = "0";
+}
+
+function displayResult(displayText, runningTotal, result, operator) {
+
 }
 
 buttonHandler.addEventListener("click", (event) => {
@@ -55,12 +56,20 @@ buttonHandler.addEventListener("click", (event) => {
 		} else {
 			displayText.innerText += clickResult;
 		}
-		tempResult = displayText.innerText;
+		result = displayText.innerText;
 	} else if (clickResult == "C") {
-		handleClear(displayText, tempResult, result);
+		handleClear(displayText, runningTotal, result);
+	} else if (clickResult == "⌫") {
+		if (displayText.innerText.length === 1) {
+			displayText.innerText = "0";
+		}
+		else {
+			displayText.innerText = displayText.innerText.substring(0, displayText.innerText.length - 1);
+		}
+		result = displayText.innerText;
 	} else if (clickResult == "+" || clickResult == "÷" || clickResult == "x" || clickResult == "-") {
-		handleSymbols(displayText, tempResult, result, clickResult)
+		handleSymbols(displayText, runningTotal, result, clickResult)
 	} else if (clickResult == "=") {
-		displayResult(displayText, tempResult, result, operator)
+		displayResult(displayText, runningTotal, result, operator)
 	}
 })

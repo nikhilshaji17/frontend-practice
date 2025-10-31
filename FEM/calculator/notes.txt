@@ -13,6 +13,7 @@ Javascript:
 2. Take the inner text of the button that was clicked
 	a. If the button was any digit, display it on the screen, and store it in result.
 	b. If the button was the Clear option, set displayText to 0, and set result to 0.
-	c. If the button was any of the operators, set diplayText to 0, but keep result as is.
-	d. If the button was the equal to sign,
-	e. If the button was the backspace option,
+	c. If the button was any of the operators:
+		- DisplayText must be 0
+		- The value we had must be stored somewhere (in result preferably)
+		- The tempResult must be reset, so as to catch the next number
