@@ -1,0 +1,75 @@
+JSON = JavaScript Object Notation
+
+Requesting data from a server once your page has already loaded, so as to achieve infinite scroll is called
+	AJAX => Asynchronous JavaScript and XML. No one uses XML anymore, but it is still called AJAX.
+
+XML = for carrying data in general, like JSON.
+HTML = for carrying UI related data.
+
+Frontend = Everything that happens in a browser. This will run on the client's device.
+Backend = All the server side processing. This will run on a server and sends results to the user.
+
+The JSON object in JavaScript has methods that allow us to convert objects to and from JSON notation.
+
+The object type in JavaScript and JSON objects are very similar, with 2 major differences:
+	1. Objects and Arrays
+		Property names must be double-quoted strings; trailing commas are forbidden.
+		Example: 
+		{
+			name: "Luna",
+			age: "24",
+			....
+			....
+		} This is allowed in JS, but not JSON (the name and age keys must be double quoted.)
+
+		Example 2:
+		{
+			"name": "Luna",
+			"age": "24",
+		} This is allowed in JS, but not JSON (there is a trailing comma after "24").
+
+		Example 3:
+		{
+			"name": 'Luna',
+			`age`: "24"
+		} This is allowed in JS, but not JSON (only double quotes, no single or back ticks).
+
+
+	2. Numbers
+		Leading zeros are prohibited. A decimal point must be followed by at least one digit. 
+		NaN and Infinity are unsupported.
+
+	JSON can have strings, numbers, objects, arrays and booleans.
+
+Not all JSON is valid JavaScript.
+
+NOTE: Your server will send a string back, not an object. We will have to parse our string to treat it
+	as an object.
+
+In order to convert our string response to a valid JS object, we use the parse() function in the JSON object.
+
+Example:
+	const responseFromBackend = `{"name": "Luna","age": 10,"breed": "Havanese","location": 
+									{"city":"Seattle","state": "WA"}}`; 
+	const responseInObjectForm = JSON.parse(responseFromBackend)
+
+Now, we can treat this object as we normally do JavaScript objects.
+
+To convert an object into a JSON acceptable string, we use JSON.stringify():
+const dog = {
+  name: "Luna",
+  age: 10,
+  breed: "Havanese",
+  location: {
+    city: "Seattle",
+    state: "WA",
+  },
+};
+
+const objString = JSON.stringify(dog);
+OR 
+JSON.stringify(dog, null, 4);
+
+The first argument is the object, the 2nd is a mutator function (usually left as null), the third is the number
+of spaces to indent by.
+
