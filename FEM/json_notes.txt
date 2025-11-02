@@ -73,3 +73,23 @@ JSON.stringify(dog, null, 4);
 The first argument is the object, the 2nd is a mutator function (usually left as null), the third is the number
 of spaces to indent by.
 
+Example:
+	api.example.com/weather?zip=98109
+	Everything from the ? indicates the query string.
+
+If you want multiple queries, they are separated by an & e.g. example.com/weather?zip=98109&day=tomorrow.
+
+Fetch function:
+The fetch function is built into the DOM. It allows you to call API's.
+The fetch function returns a promise.
+
+Depending on what the server returns, we would have to handle our promise accordingly. 
+View the example in api_example for more context.
+The response received is a blob, and we have to convert it to text first before using it.
+
+Use the .catch() function to handle errors.
+
+We can use promise chaining to handle the output of one promise inside another promise.
+We do this since we do not know how much time these promises take to execute.
+
+Async Await:
