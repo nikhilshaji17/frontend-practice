@@ -108,3 +108,15 @@ Example of an asynchronous function that has multiple promises to resolve:
 
 	getLotsOfNames();
 
+GET request:
+When you try to pull information from an API.
+
+POST request:
+When you send information to an API.
+
+the .fetch() function is GET by default, we have to override it to make it POST:
+	Example:
+	await fetch(URL, {
+		method: "POST",
+		body: JSON.stringify({"word", "intent"})
+	})
