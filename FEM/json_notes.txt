@@ -93,3 +93,18 @@ We can use promise chaining to handle the output of one promise inside another p
 We do this since we do not know how much time these promises take to execute.
 
 Async Await:
+Await can only be used in async functions.
+
+Async functions will always return us a promise, which we have to convert to our required type.
+
+Example of an asynchronous function that has multiple promises to resolve:
+	async function getName(name) {
+		return name;
+	}
+
+	async function getLotsOfNames() {
+		const names = Promise.all([getName("A"), getName("B"), getName("C"), getName("D")]);
+	}
+
+	getLotsOfNames();
+
