@@ -1,6 +1,6 @@
 const TOTAL_ROWS = 6;
 const TOTAL_COLS = 5;
-const FINAL_ANSWER_URL = "https://words.dev-apis.com/word-of-the-day";
+const FINAL_ANSWER_URL = "https://words.dev-apis.com/word-of-the-day?random=1";
 const POST_URL = "https://words.dev-apis.com/validate-word"
 let FINAL_ANSWER = "";
 
@@ -29,12 +29,6 @@ async function getFinalAnswer() {
 	createAnswerDictAndList();
 }
 
-function incrementCol() {
-	if (currentCol < TOTAL_COLS - 1) {
-		currentCol += 1;
-	}
-}
-
 function resetBoard() {
 	currentRow += 1;
 	currentCol = 0;
@@ -42,12 +36,9 @@ function resetBoard() {
 }
 
 function addLetterToScreen(upperCase) {
-	if (currentCol < TOTAL_COLS) {
-		let index = ".box-" + currentRow + currentCol;
-		const currentBox = document.querySelector(index);
-		currentBox.innerText = upperCase;
-	}
-	incrementCol();
+	let index = ".box-" + currentRow + currentCol;
+	const currentBox = document.querySelector(index);
+	currentBox.innerText = upperCase;
 }
 
 function changeBoxColor(i, boxColor) {
@@ -125,7 +116,7 @@ async function checkWord() {
 }
 
 function handleEnter() {
-	if (currentCol != 4) {
+	if (currentCol != TOTAL_COLS) {
 		return ;
 	} else {
 		checkWord();
@@ -146,21 +137,32 @@ function handleLetter(letter) {
 	}
 	if (isLetter(letter) === true) {
 		const upperCase = letter.toUpperCase();
-		addLetterToScreen(upperCase);
-		if (currentString.length < 5) {
+		if (currentCol < TOTAL_COLS) {
+			addLetterToScreen(upperCase);
 			currentString += letter;
+			currentCol += 1;
 		}
 	} else if (letter === 'Enter') {
 		handleEnter();
 	} else if (letter === 'Backspace') {
-		// Logic is incorrect, redo
-		// let index = ".box-" + currentRow + currentCol;
-		// const currentBox = document.querySelector(index);
-		// if (currentString.length > 0) {
-		// 	currentString = currentString.substring(0, currentString.length - 1);
-		// 	currentBox.innerText = "";
-		// 	currentCol -= 1;
-		// }
+		if (currentCol === 0) {
+			const index = ".box-" + currentRow + currentCol;
+			const currentBox = document.querySelector(index);
+			currentBox.innerText = "";
+			currentString = "";
+		} else if (currentCol == TOTAL_COLS) {
+			currentCol -= 1;
+			const index = ".box-" + currentRow + currentCol;
+			const currentBox = document.querySelector(index);
+			currentBox.innerText = "";
+			currentString = currentString.substring(0, currentString.length - 1);
+		} else {
+			currentCol -= 1;
+			const index = ".box-" + currentRow + currentCol;
+			const currentBox = document.querySelector(index);
+			currentBox.innerText = "";
+			currentString = currentString.substring(0, currentString.length - 1);
+		}
 	} else {
 		;
 	}
