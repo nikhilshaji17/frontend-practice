@@ -80,3 +80,10 @@ Instead of having to write event listeners for every button, we can just do:
 })
 
 event.target = lets you know what was clicked.
+
+Status Codes:
+300's => redirects
+400's => Some error you have commited
+500's => Some error from the server side
+200's => everything went okay
+

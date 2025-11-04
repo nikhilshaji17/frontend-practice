@@ -7,24 +7,26 @@ let FINAL_ANSWER = "";
 let currentRow = 0;
 let currentCol = 0;
 let currentString = "";
-let final_answer_dict = {};
+let finalAnswerDict = {};
+let finalAnswerList;
 
-function createAnswerDict() {
+function createAnswerDictAndList() {
 	for (let i = 0; i < FINAL_ANSWER.length; i ++){
 		let currentLetter = FINAL_ANSWER[i];
-		if (currentLetter in final_answer_dict) {
-			final_answer_dict[currentLetter].push(i);
+		if (currentLetter in finalAnswerDict) {
+			finalAnswerDict[currentLetter] += 1;
 		} else {
-			final_answer_dict[currentLetter] = [i];
+			finalAnswerDict[currentLetter] = 1;
 		}
 	}
+	finalAnswerList = FINAL_ANSWER.split("");
 }
 
 async function getFinalAnswer() {
 	const promise = await fetch(FINAL_ANSWER_URL);
 	const afterProcessing = await promise.json();
 	FINAL_ANSWER = afterProcessing.word;
-	createAnswerDict();
+	createAnswerDictAndList();
 }
 
 function incrementCol() {
@@ -55,16 +57,6 @@ function changeBoxColor(i, boxColor) {
 	currentBox.style.color = "white";
 }
 
-function correctLetterPosition(letter, i) {
-	let dictIndices = final_answer_dict[letter];
-	for (let j = 0; j < dictIndices.length; j++) {
-		if (i === dictIndices[j]) {
-			return true;
-		}
-	}
-	return false;
-}
-
 function checkCount(letter, tempDict) {
 	let count = tempDict[letter].length;
 	if (count <= 0) {
@@ -73,27 +65,25 @@ function checkCount(letter, tempDict) {
 	return true;
 }
 
-function checkPosition(index, letter, tempDict) {
-	let tempList = tempDict[letter];
-	for (let i = 0; i < tempList; i++) {
-		if (index === tempList[i]) {
-			tempDict[letter].splice(i, 1);
-			return true;
+function compareValidLetters() {
+	const guessParts = currentString.split("");
+	let tempDict = JSON.parse(JSON.stringify(finalAnswerDict));
+	for (let i = 0; i < FINAL_ANSWER.length; i++) {
+		// mark as correct
+		if (guessParts[i] === finalAnswerList[i]) {
+			changeBoxColor(i, "darkgreen");
+			tempDict[guessParts[i]] -= 1;
 		}
 	}
-	return false;
-}
 
-function compareValidLetters() {
-	let tempDict = final_answer_dict;
-	for (let i = 0; i < currentString.length; i++) {
-		if (currentString[i] in tempDict) {
-			if (checkCount(currentString[i], tempDict)) {
-				if (checkPosition(i, currentString[i], tempDict)) {
-					changeBoxColor(i, "darkgreen");
-				} else {
-					changeBoxColor(i, "goldenrod");
-				}
+	for (let i = 0; i < FINAL_ANSWER.length; i++) {
+		// mark as correct
+		if (guessParts[i] === finalAnswerList[i]) {
+			// do nothing, this is handled above
+		} else if (finalAnswerList.includes(guessParts[i])) {
+			if (tempDict[guessParts[i]] > 0) {
+				changeBoxColor(i, "goldenrod");
+				tempDict[guessParts[i]] -= 1;
 			} else {
 				changeBoxColor(i, "#999");	
 			}
@@ -137,10 +127,11 @@ async function checkWord() {
 function handleEnter() {
 	if (currentCol != 4) {
 		return ;
-	} else if (currentString === FINAL_ANSWER){
-		alert("You win!");
 	} else {
 		checkWord();
+		if (currentString === FINAL_ANSWER){
+			alert("You win!");
+		}
 	}
 }
 
@@ -160,7 +151,6 @@ function handleLetter(letter) {
 			currentString += letter;
 		}
 	} else if (letter === 'Enter') {
-		console.log(currentString);
 		handleEnter();
 	} else if (letter === 'Backspace') {
 		let index = ".box-" + currentRow + currentCol;
@@ -177,7 +167,6 @@ function handleLetter(letter) {
 
 function init() {
 	getFinalAnswer();
-	createAnswerDict();
 }
 
 init();
