@@ -1,0 +1,7 @@
+HTML:
+I am considering using a table.
+Each row would have 5 td's, and there would be 6 rows in total.
+Revision: I ended up using a grid, with 5 columns, and a min size of 85px, with 
+	a max size of 100px.
+
+
