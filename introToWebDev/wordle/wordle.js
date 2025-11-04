@@ -153,13 +153,14 @@ function handleLetter(letter) {
 	} else if (letter === 'Enter') {
 		handleEnter();
 	} else if (letter === 'Backspace') {
-		let index = ".box-" + currentRow + currentCol;
-		const currentBox = document.querySelector(index);
-		if (currentString.length > 0) {
-			currentString = currentString.slice(0, currentString.length - 1);
-			currentBox.innerText = "";
-			currentCol -= 1;
-		}
+		// Logic is incorrect, redo
+		// let index = ".box-" + currentRow + currentCol;
+		// const currentBox = document.querySelector(index);
+		// if (currentString.length > 0) {
+		// 	currentString = currentString.substring(0, currentString.length - 1);
+		// 	currentBox.innerText = "";
+		// 	currentCol -= 1;
+		// }
 	} else {
 		;
 	}
