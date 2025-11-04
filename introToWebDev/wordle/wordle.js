@@ -141,7 +141,7 @@ function isLetter(letter) {
 
 function handleLetter(letter) {
 	if (currentRow >= TOTAL_ROWS) {
-		alert("Game Over!");
+		alert("Game Over! The word was " + FINAL_ANSWER);
 		return ;
 	}
 	if (isLetter(letter) === true) {
