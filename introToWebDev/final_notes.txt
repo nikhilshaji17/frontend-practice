@@ -87,3 +87,4 @@ Status Codes:
 500's => Some error from the server side
 200's => everything went okay
 
+Use the require keyword to include a package.
