@@ -121,6 +121,7 @@ function handleEnter() {
 	} else {
 		checkWord();
 		if (currentString === FINAL_ANSWER){
+			document.querySelector(".brand").classList.add("rainbow");
 			alert("You win!");
 		}
 	}
